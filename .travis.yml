@@ -1,6 +1,6 @@
 matrix:
   include:
-    - language: c++
+    - language: cpp
       before_script:
         - cd c++/
       script:

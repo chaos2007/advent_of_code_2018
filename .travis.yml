@@ -1,8 +1,13 @@
 matrix:
   include:
-    - language: c++
+    - language: cpp
       before_script:
         - cd c++/
+      script:
+        - make
+    - language: rust
+      before_script:
+        - cd rust/
       script:
         - make
 

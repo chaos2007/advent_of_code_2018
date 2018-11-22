@@ -1,20 +1,14 @@
 version: 2
 jobs:
-  rust_build:
+  rust_and_cpp_build:
     docker:
       - image: circleci/rust:latest
     steps:
       - checkout
       - run: cd rust; make
-  cpp_build:
-    docker:
-        - image: circleci/rust:latest
-    steps:
-      - checkout
       - run: cd c++; make
 workflows:
   version: 2
   rust_and_cpp:
     jobs:
-      - rust_build
-      - cpp_build
+      - rust_and_cpp_build

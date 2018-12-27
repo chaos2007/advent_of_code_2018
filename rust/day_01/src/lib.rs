@@ -1,5 +1,14 @@
-fn string_to_int(word: String) -> i32 {
-    return 0;
+use std::io::{self, BufReader};
+use std::io::prelude::*;
+use std::fs::File;
+
+pub fn parse_and_add_file() -> io::Result<i32> {
+    let f = File::open("input.txt")?;
+    let f = BufReader::new(f);
+    return Ok(f
+        .lines()
+        .map(|l| l.unwrap().parse::<i32>().unwrap())
+        .sum());
 }
 
 #[cfg(test)]
@@ -7,8 +16,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_some_words() {
-        assert_eq!(-1, string_to_int("-1".to_string()));
-        assert_eq!(3, string_to_int("+3".to_string()));
+    fn test_part_one() {
+        assert_eq!(408, parse_and_add_file().unwrap());
     }
 }
